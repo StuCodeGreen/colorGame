@@ -3,7 +3,7 @@ body {
   background-color: black;
   margin: 0px;
   font-family: "Montserrat", "Avenir";
-
+  min-width: 450px;
 }
 
 .square {
@@ -18,8 +18,10 @@ body {
   -moz-transition:background 0.6s;
 }
 .container {
+  /* width: 100%; */
   max-width: 600px;
   margin:20px auto;
+
 
 }
 
@@ -55,6 +57,7 @@ button{
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   border:none;
+  outline:none;
 }
 
 button:hover {
@@ -64,7 +67,7 @@ button:hover {
 }
 
 
-.seleceted {
+.selected {
   color:white;
   background: steelblue;
 }
@@ -77,4 +80,6 @@ button:hover {
   display:inline-block;
   width:20%;
 }
-*:focus {outline:none}
+.hero {
+
+}
