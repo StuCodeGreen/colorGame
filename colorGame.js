@@ -1,6 +1,6 @@
 var numOfSquares = 6;
-var colors = generateRandomColors(6);
-var pickedColor = pickColor();
+var colors = [];
+var pickedColor;
 var h1 = document.querySelector("h1")
 var body = document.querySelector("body");
 var squares = document.querySelectorAll(".square");
@@ -10,21 +10,13 @@ var resetButton = document.querySelector("#reset");
 var modeButtons = document.querySelectorAll(".mode");
  init();
 function init () {
-// mode buttons event listeners
-  for(i = 0; i < modeButtons.length; i++){
-    modeButtons[i].addEventListener("click", function(){
-      modeButtons[0].classList.remove("selected");
-      modeButtons[1].classList.remove("selected");
-      modeButtons[2].classList.remove("selected");
-      this.classList.add("selected");
+setupModeButtons();
+setupSquares();
+reset();
+}
 
-      this.textContent === "Easy" ? numOfSquares = 3: numOfSquares = 6;
-      if(this.textContent === "Hero") {
-        numOfSquares = 39;
-      }
-      reset();
-    });
-  }
+//sets squares
+function setUpSquares() {
   for(i=0; i< squares.length; i++) {
     // add initial colors to squares
     squares[i].style.backgroundColor = colors[i];
@@ -34,8 +26,6 @@ function init () {
       // grab color of clicked squered
 
       var clickedColor = this.style.backgroundColor;
-      // console.log(clickedColor, pickedColor)
-      // compare to picked color
       if(clickedColor === pickedColor){
         h1.style.backgroundColor = clickedColor;
         messageDisplay.textContent = "Correct!";
@@ -50,7 +40,24 @@ function init () {
     })
   }
 }
+// mode buttons event listeners
+function setUpModeButtons () {
+  for(i = 0; i < modeButtons.length; i++){
+    modeButtons[i].addEventListener("click", function(){
+      modeButtons[0].classList.remove("selected");
+      modeButtons[1].classList.remove("selected");
+      modeButtons[2].classList.remove("selected");
+      this.classList.add("selected");
 
+      this.textContent === "Easy" ? numOfSquares = 3: numOfSquares = 6;
+      if(this.textContent === "Hero") {
+        numOfSquares = 39;
+      }
+      reset();
+    });
+  }
+}
+// resets game
 function reset() {
   h1.style.backgroundColor = "steelblue"
   resetButton.textContent = "New Colors"
@@ -100,4 +107,3 @@ function generateRandomColors(num){
     return "rgb("+r +", " + g + ", " + b + ")";
   }
 }
-reset();
