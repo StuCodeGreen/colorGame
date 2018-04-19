@@ -10,8 +10,8 @@ var resetButton = document.querySelector("#reset");
 var modeButtons = document.querySelectorAll(".mode");
  init();
 function init () {
-setupModeButtons();
-setupSquares();
+setUpModeButtons();
+setUpSquares();
 reset();
 }
 
